@@ -19,6 +19,10 @@ module.exports = {
     'no-param-reassign': 'off',
     camelcase: 'off',
     'no-underscore-dangle': 'off',
-    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    'no-unused-vars': [
+      'error',
+      { argsIgnorePattern: 'next' },
+      { commonjs: true, amd: true },
+    ],
   },
 };
