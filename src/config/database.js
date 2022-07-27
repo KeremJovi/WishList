@@ -5,7 +5,7 @@ module.exports = {
   host: 'localhost',
   username: 'kerem',
   password: '9180',
-  database: 'postgres',
+  database: 'wishlist',
   define: {
     timestamps: true,
     underscored: true,
