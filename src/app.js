@@ -1,9 +1,9 @@
 import express from 'express';
 
 import routes from './routes';
+import AppError from './middleware/errors/AppError';
 
 import './database';
-import AppError from './AppError';
 
 class App {
   constructor() {
@@ -15,18 +15,6 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
-    this.server.use((err, req, res, next) => {
-      if (err instanceof AppError) {
-        return res.status(err.statusCode).json({
-          status: 'error',
-          message: err.message,
-        });
-      }
-      return res.status(500).json({
-        status: 'error',
-        message: 'Internal server error',
-      });
-    });
   }
 
   routes() {
