@@ -8,7 +8,7 @@ class CreateProductServices {
       where: { title: product.title },
     });
     if (thisExists) {
-      throw new AppError('This title already exists!');
+      throw new AppError('This title already exists!', 401);
     }
 
     const result = await Product.create(product);
