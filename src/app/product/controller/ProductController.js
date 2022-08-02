@@ -4,6 +4,7 @@ import CreateProductServices from '../services/CreateProductServices';
 import ShowProductServices from '../services/ShowProductServices';
 import UpdateProductServices from '../services/UpdateProductServices';
 import DeleteProductServices from '../services/DeleteProductServices';
+import ListProductServices from '../services/ListProductServices';
 
 class ProductController {
   async store(req, res) {
@@ -33,6 +34,14 @@ class ProductController {
     const { product_id } = req.params;
     const deleteProduct = await DeleteProductServices.execute(product_id);
     return res.status(200).json(deleteProduct);
+  }
+
+  async list(req, res) {
+    const infoProduct = req.query.title;
+    console.log('Estou no controller', infoProduct);
+    const findProduc = await ListProductServices.execute(infoProduct);
+
+    return res.json(findProduc);
   }
 }
 

@@ -7,5 +7,6 @@ productRouter.post('/new', ProductController.store);
 productRouter.get('/:product_id', ProductController.show);
 productRouter.put('/up/:product_id', ProductController.update);
 productRouter.delete('/out/:product_id', ProductController.delete);
+productRouter.get('/', ProductController.list);
 
 export default productRouter;
