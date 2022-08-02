@@ -1,12 +1,14 @@
-// class ShowProductServices {
-//   async execute({ id }) {
-//     try {
-//       const findProduct = await Product.findOne(id);
-//       return res.json(findProduct);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-// }
+import Product from '../model/Product';
+import AppError from '../../../middleware/errors/AppError';
 
-// export default new ShowProductServices();
+class ShowProductServices {
+  async execute(product_id) {
+    const findProductId = await Product.findByPk(product_id);
+
+    if (!findProductId) {
+      throw new AppError('This product does not exist');
+    }
+    return findProductId;
+  }
+}
+export default new ShowProductServices();
